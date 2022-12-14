@@ -1,25 +1,28 @@
+using c_sharp_api_starter.Helpers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+GlobalServices.AddDefaultServices(builder);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Add swagger
+GlobalServices.AddSwagger(builder);
 
+// Build application
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// use general exceptions handler (use error-response-model)
+GlobalExceptionsHandler.Configure(app);
+
+// use success response handler (use success-response-model)
+//app.UseMiddleware<ResponseModelMiddleware>();
+
+// Use development middlewares
 if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    GlobalServices.UseDevelopmentMiddlewares(app);
 
-app.UseHttpsRedirection();
+// use all middlewares
+GlobalServices.UseMiddlewares(app);
 
-app.UseAuthorization();
-
-app.MapControllers();
-
+// run application
 app.Run();
