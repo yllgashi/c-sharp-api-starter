@@ -8,11 +8,11 @@ GlobalServices.AddDefaultServices(builder);
 // Add swagger
 GlobalServices.AddSwagger(builder);
 
-// Add transient services
-GlobalServices.AddTransientDependencies(builder);
-
 // Add appsettings.json configuration into AppSettings class
 GlobalServices.InitializeAppSettings(builder);
+
+// Add transient services
+GlobalServices.AddTransientDependencies(builder);
 
 // Build application
 var app = builder.Build();
