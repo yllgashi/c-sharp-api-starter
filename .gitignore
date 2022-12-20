@@ -1,3 +1,9 @@
 /.vs
 /c-sharp-api-starter/bin
 /c-sharp-api-starter/obj
+/models/bin
+/models/obj
+/services/bin
+/services/obj
+/repository/bin
+/repository/obj
