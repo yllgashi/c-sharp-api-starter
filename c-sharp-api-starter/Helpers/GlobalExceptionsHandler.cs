@@ -10,9 +10,10 @@ namespace c_sharp_api_starter.Helpers
             {
                 appError.Run(async context =>
                 {
-                    string errorMessage = context.Features.Get<IExceptionHandlerFeature>()?.Error?.Message ?? "ERRORS.GENERAL";
+                    string thrownMessage = context.Features.Get<IExceptionHandlerFeature>()?.Error?.Message ?? "";
+                    string errorMessage = thrownMessage.StartsWith("ERRORS") ? thrownMessage : "ERRORS.GENERAL";
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                    await context.Response.WriteAsJsonAsync(errorMessage);
+                    await context.Response.WriteAsJsonAsync(ResponseResult<string>.Error(errorMessage));
                 });
             });
         }
