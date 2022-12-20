@@ -1,7 +1,6 @@
 ﻿namespace repository
 {
-    public class Class1
+    public class BaseRepository
     {
-
     }
 }
