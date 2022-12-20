@@ -11,6 +11,9 @@ GlobalServices.AddSwagger(builder);
 // Add transient services
 GlobalServices.AddTransientDependencies(builder);
 
+// Add appsettings.json configuration into AppSettings class
+GlobalServices.InitializeAppSettings(builder);
+
 // Build application
 var app = builder.Build();
 

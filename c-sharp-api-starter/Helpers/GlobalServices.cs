@@ -1,4 +1,5 @@
-﻿using repository.Products;
+﻿using models;
+using repository.Products;
 using services.Products;
 
 namespace c_sharp_api_starter.Helpers
@@ -33,6 +34,11 @@ namespace c_sharp_api_starter.Helpers
         {
             builder.Services.AddTransient<IProductsService, ProductsService>();
             builder.Services.AddTransient<IProductsRepository, ProductsRepository>();
+        }
+
+        public static void InitializeAppSettings(WebApplicationBuilder builder)
+        {
+           AppSettings.ConnectionString = builder.Configuration.GetSection("ConnectionStrings")["mssql"];
         }
     }
 }
