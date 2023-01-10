@@ -38,7 +38,7 @@ namespace c_sharp_api_starter.Helpers
 
         public static void InitializeAppSettings(WebApplicationBuilder builder)
         {
-           AppSettings.ConnectionString = builder.Configuration.GetSection("ConnectionStrings")["mssql"] ?? "";
+            AppSettings.ConnectionString = builder.Configuration.GetSection(AppSettings.CONNECTION_STRINGS_SECTION)[AppSettings.MSSQL_DB] ?? "";
         }
     }
 }
