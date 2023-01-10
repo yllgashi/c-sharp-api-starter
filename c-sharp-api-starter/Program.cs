@@ -14,6 +14,9 @@ GlobalServices.InitializeAppSettings(builder);
 // Add transient services
 GlobalServices.AddTransientDependencies(builder);
 
+// add jwt authorization
+GlobalServices.AddAuthorization(builder);
+
 // Build application
 var app = builder.Build();
 

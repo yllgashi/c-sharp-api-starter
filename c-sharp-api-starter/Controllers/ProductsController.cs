@@ -1,4 +1,5 @@
 ﻿using c_sharp_api_starter.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using models;
 using services.Products;
@@ -16,7 +17,8 @@ namespace c_sharp_api_starter.Controllers
            _productsService = productsService;
         }
 
-        [HttpGet(Name = "")]
+        [Authorize]
+        [HttpGet("")]
         public ResponseResult<List<Product>> GetProducts() 
         {
           List<Product> result = _productsService.GetProducts();
