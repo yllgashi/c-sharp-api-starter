@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 GlobalServices.AddDefaultServices(builder);
 
 // Add swagger
-GlobalServices.AddSwagger(builder);
+SwaggerHelper.AddSwagger(builder);
 
 // Add appsettings.json configuration into AppSettings class
 GlobalServices.InitializeAppSettings(builder);
